@@ -1,9 +1,15 @@
 ---
 - hosts: all
-  gather_facts: true
   become: true
-  become_user: root
   tasks:
-    - apt:
-        name: nginx
+  - name: Instala nginx
+    yum:
+      name: nginx
+      state: installed
+
+  - name: nginx is running and enabled
+    service:
+      name: nginx
+      state: started
+      enabled: yes
       when: ansible_os_family == "CentOS"
