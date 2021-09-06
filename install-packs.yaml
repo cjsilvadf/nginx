@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Instala nfs-utils
+    yum:
+      name: nfs-utils
+      state: installed
+
+  - name: rpcbind is running and enabled
+    service:
+      name: rpcbind
+      state: started
+      enabled: yes
