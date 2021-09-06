@@ -12,3 +12,8 @@
       name: rpcbind
       state: started
       enabled: yes
+      
+  - name: Copy file nfs
+    ansible.builtin.copy:
+      content: src/test.conf
+      dest: /etc/test.conf
